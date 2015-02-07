@@ -16,7 +16,6 @@
             echo $this->Form->input('description');
             echo $this->Form->input('pomodoros');
             echo $this->Form->input('started');
-            echo $this->Form->input('finished');
         ?>
     </fieldset>
     <?= $this->Form->button(__('Submit')) ?>

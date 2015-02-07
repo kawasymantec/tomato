@@ -101,4 +101,18 @@ class TasksController extends AppController
         }
         return $this->redirect(['action' => 'index']);
     }
+
+    public function finish($id = null) {
+        $task = $this->Tasks->get($id, [ 'contain' => [] ]);
+        // $this->Tasks->id=$id;
+        $task->finished = date("Y-m-d H:i:s");
+        if($this->Tasks->save($task)){
+            //$this->Tasks->id=$id;
+            //if($this->Post->saveField('finished',date("Y-m-d H:i:s"))){
+                $this->Flash->success('The task has been saved.');
+                return $this->redirect(['action' => 'index']);
+            } else {
+                $this->Flash->error('The task could not be saved. Please, try again.');
+            }
+        }
 }
