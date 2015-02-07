@@ -121,18 +121,46 @@
         </div>
         <div class="col-md-4">
         <?php foreach ($tasks as $task): ?>
-            <?= '<div class="active task">' ?>
-                <?= $this->Number->format($task->id) ?><br>
-                <?= h($task->title) ?>
-            <?= "</div>" ?>
+        <?php if($task->finished == NULL): ?>
+            <div class="active task">
+                <div class="row">
+                    <div class="col-md-1">
+                        <span class="label label-default">
+                            <?= $this->Number->format($task->id) ?>
+                        </span>
+                    </div>
+                    <div class="col-md-11">
+                        <?= $this->Html->link($task->title, ['action' => 'edit', $task->id]) ?>
+                    </div>
+                </div>
+                
+                <?= $this->Form->create($task, array('action'=>'finish')); ?>
+                <?= $this->Form->button(__('完了！'), array('class' => 'fr btn btn-primary')) ?>
+                <?= $this->Form->end() ?>
+                
+            </div>
+        <?php endif ?>
         <?php endforeach; ?>
         </div>
         <div class="col-md-4">
         <?php foreach ($tasks as $task): ?>
-            <?= '<div class="done task">' ?>
-                <?= $this->Number->format($task->id) ?> (DONE at <?= h($task->finished) ?>)<br>
-                <?= h($task->title) ?>
-            <?= "</div>" ?>
+        <?php if($task->finished != NULL): ?>
+            <div class="done task">
+                <div class="row">
+                    <div class="col-md-1">
+                        <span class="label label-default">
+                            <?= $this->Number->format($task->id) ?>
+                        </span>
+                    </div>
+                    <div class="col-md-11">
+                        <?= h($task->title) ?>
+                    </div>
+                </div>
+                <div class="fr">
+                    <span class="label label-default">DONE at <?= h($task->finished) ?></span>
+                </div>
+            </div>
+        <?php endif ?>
         <?php endforeach; ?>
         </div>
     </div>

@@ -26,6 +26,9 @@
 	padding: 2rem;
 }
 
+.fr{
+	float: right;
+}
 
 /*from cake.css*/
 header {
