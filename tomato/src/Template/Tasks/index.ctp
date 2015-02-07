@@ -31,6 +31,23 @@
 
     <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
     <script>
+    // ブラウザ対応拡張子取得
+    var AUDIO_EXT = (function(){
+        var ext     = "";
+        var audio   = new Audio();
+        if      (audio.canPlayType("audio/ogg") == 'maybe') { ext="ogg"; }
+        else if (audio.canPlayType("audio/mp3") == 'maybe') { ext="mp3"; }
+        else if (audio.canPlayType("audio/wav") == 'maybe') { ext="wav"; }
+        return ext;
+    })();
+    //とりあえず固定
+    AUDIO_EXT = "mp3";
+    // あらかじめ読み込んでおく
+    var AUDIO_LIST = {
+        "ALERT": new Audio("se/alert." + AUDIO_EXT),
+        "BGM": new Audio("se/bgm." + AUDIO_EXT),
+    };
+
     $(function() {
         $('.chart').easyPieChart({
             easing: 'easeOutBounce',
@@ -76,6 +93,7 @@
     var intervaltime = 5 * 60; //5分
     var targettime = 0;
     var updatetimer;
+    var isPlay = false;
     function timerupdate(){
         var currentTime = new Date();
         var status = (currentTime - starttime) / 1000;
@@ -83,7 +101,15 @@
         chart.update((status/targettime)*100);
         var chartB = window.chartB = $('.chartB').data('easyPieChart');
         chartB.update((status/targettime)*100);
-
+        if(status>targettime){
+            if(isPlay==false){
+                isPlay = true;
+                AUDIO_LIST["ALERT"].pause();
+                AUDIO_LIST["ALERT"].currentTime = 0;
+                AUDIO_LIST["ALERT"].loop = true;                
+                AUDIO_LIST["ALERT"].play();
+            }
+        }
     }
 
     function starttimer(tm1,work){
@@ -93,14 +119,23 @@
         if(work == 1){
             $('.chart').css("display", "");
             $('.chartB').css("display", "none");
-
+            AUDIO_LIST["BGM"].pause();
+            AUDIO_LIST["BGM"].currentTime = 0;
         }else{
             $('.chart').css("display", "none");
             $('.chartB').css("display", "");
+            AUDIO_LIST["BGM"].pause();
+            AUDIO_LIST["BGM"].currentTime = 0;
+            AUDIO_LIST["BGM"].loop = true;
+            AUDIO_LIST["BGM"].play();
         }
-
         starttime = new Date();
         targettime = tm1;
+        if(isPlay==true){
+            isPlay = false;
+            AUDIO_LIST["ALERT"].pause();
+            AUDIO_LIST["ALERT"].currentTime = 0;
+        }
         updatetimer = setInterval("timerupdate();",100);
 
     }
