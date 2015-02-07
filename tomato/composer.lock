@@ -1,8 +1,7 @@
 {
     "_readme": [
         "This file locks the dependencies of your project to a known state",
-        "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
-        "This file is @generated automatically"
+        "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
     "hash": "6eec4753003eac5d8c7cbe790a2463db",
     "packages": [
@@ -466,21 +465,20 @@
         },
         {
             "name": "robmorgan/phinx",
-            "version": "v0.4.1",
+            "version": "v0.4.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/robmorgan/phinx.git",
-                "reference": "357210707c000f50edea802d84b74724ad122478"
+                "reference": "257b9e34877d442e177bb1b728d04d00d8c876ba"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/robmorgan/phinx/zipball/357210707c000f50edea802d84b74724ad122478",
-                "reference": "357210707c000f50edea802d84b74724ad122478",
+                "url": "https://api.github.com/repos/robmorgan/phinx/zipball/257b9e34877d442e177bb1b728d04d00d8c876ba",
+                "reference": "257b9e34877d442e177bb1b728d04d00d8c876ba",
                 "shasum": ""
             },
             "require": {
                 "php": ">=5.3.2",
-                "symfony/class-loader": "~2.6.0",
                 "symfony/config": "~2.6.0",
                 "symfony/console": "~2.6.0",
                 "symfony/yaml": "~2.6.0"
@@ -494,8 +492,8 @@
             ],
             "type": "library",
             "autoload": {
-                "psr-0": {
-                    "Phinx": "src/"
+                "psr-4": {
+                    "Phinx\\": "src/Phinx"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -508,6 +506,12 @@
                     "email": "robbym@gmail.com",
                     "homepage": "http://robmorgan.id.au",
                     "role": "Lead Developer"
+                },
+                {
+                    "name": "Woody Gilk",
+                    "email": "woody.gilk@gmail.com",
+                    "homepage": "http://shadowhand.me",
+                    "role": "Developer"
                 }
             ],
             "description": "Phinx makes it ridiculously easy to manage the database migrations for your PHP app.",
@@ -519,57 +523,7 @@
                 "migrations",
                 "phinx"
             ],
-            "time": "2014-12-23 06:06:14"
-        },
-        {
-            "name": "symfony/class-loader",
-            "version": "v2.6.4",
-            "target-dir": "Symfony/Component/ClassLoader",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/symfony/ClassLoader.git",
-                "reference": "deac802f76910708ab50d039806cfd1866895b52"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/symfony/ClassLoader/zipball/deac802f76910708ab50d039806cfd1866895b52",
-                "reference": "deac802f76910708ab50d039806cfd1866895b52",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.3.3"
-            },
-            "require-dev": {
-                "symfony/finder": "~2.0,>=2.0.5"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "2.6-dev"
-                }
-            },
-            "autoload": {
-                "psr-0": {
-                    "Symfony\\Component\\ClassLoader\\": ""
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Symfony Community",
-                    "homepage": "http://symfony.com/contributors"
-                },
-                {
-                    "name": "Fabien Potencier",
-                    "email": "fabien@symfony.com"
-                }
-            ],
-            "description": "Symfony ClassLoader Component",
-            "homepage": "http://symfony.com",
-            "time": "2015-01-05 14:28:40"
+            "time": "2015-02-06 23:09:57"
         },
         {
             "name": "symfony/config",
@@ -910,7 +864,9 @@
             "time": "2014-01-17 12:21:18"
         }
     ],
-    "aliases": [],
+    "aliases": [
+
+    ],
     "minimum-stability": "dev",
     "stability-flags": {
         "cakephp/cakephp": 20,
@@ -918,10 +874,10 @@
         "cakephp/debug_kit": 20,
         "cakephp/bake": 20
     },
-    "prefer-stable": true,
-    "prefer-lowest": false,
     "platform": {
         "php": ">=5.4.16"
     },
-    "platform-dev": []
+    "platform-dev": [
+
+    ]
 }
