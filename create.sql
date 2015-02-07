@@ -1,0 +1,12 @@
+CREATE TABLE Tasks (
+    id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    title VARCHAR(50),
+    description TEXT,
+    pomodoros INT UNSIGNED,
+    started DATETIME DEFAULT NULL,
+    finished DATETIME DEFAULT NULL,
+    created DATETIME DEFAULT NULL,
+    modified DATETIME DEFAULT NULL
+);
+
+
