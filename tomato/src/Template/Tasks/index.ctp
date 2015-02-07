@@ -4,6 +4,7 @@
 <!-- Include all compiled plugins (below), or include individual files as needed -->
 <?= $this->Html->script('bootstrap.min') ?>
 <?= $this->Html->script('jquery.easypiechart.min') ?>
+<?= $this->Html->script('jquery.cookie') ?>
 <?= $this->Html->css('tomato') ?>
 
 <div class="container">
@@ -25,9 +26,8 @@
         <div class="secs">0sec</div>
     </div>
 
-
-    <span class="btn js_start">作業開始</span>
-    <span class="btn js_stop">停止</span>
+    <span class="btn btn-default js_start">作業開始</span>
+    <span class="btn btn-default js_stop">停止</span>
 
     <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
     <script>
@@ -116,6 +116,47 @@
         chartB.update(0);
     }
 
+    $(document).ready(function(){
+        console.log($.cookie("starttime"));
+        $('#finish_btn').click(function(){
+            $.cookie("starttime", starttime);
+            $.cookie("targettime", targettime);
+            $.cookie("type", $('.js_start').text());
+        });
+
+        if($.cookie("starttime")){
+            starttime = new Date($.cookie("starttime"));
+            $.removeCookie("starttime");
+        }else{
+            starttime = 0;
+        }
+        if($.cookie("targettime")){
+            targettime = Number($.cookie("targettime"));
+            $.removeCookie("targettime");
+        }else{
+            targettime=0;
+        }
+        if($.cookie("type")){
+            $('.js_start').text($.cookie("type"));
+            $.removeCookie("type");
+        }
+        if(targettime !== 0){
+console.log(starttime);
+            //タイマ再開
+            if($('.js_start').text()=="休憩開始" ){
+                $('.chart').css("display", "");
+                $('.chartB').css("display", "none");
+
+            }else{
+                $('.chart').css("display", "none");
+                $('.chartB').css("display", "");
+            }
+
+            updatetimer = setInterval("timerupdate();",100);
+
+        }
+
+    });
 
     </script>
         </div>
@@ -135,7 +176,7 @@
                 </div>
                 
                 <?= $this->Form->create($task, array('action'=>'finish')); ?>
-                <?= $this->Form->button(__('完了！'), array('class' => 'fr btn btn-primary')) ?>
+                <?= $this->Form->button(__('完了！'), array('id'=>'finish_btn', 'class' => 'fr btn btn-primary')) ?>
                 <?= $this->Form->end() ?>
                 
             </div>
