@@ -469,12 +469,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/robmorgan/phinx.git",
-                "reference": "257b9e34877d442e177bb1b728d04d00d8c876ba"
+                "reference": "5ecb4b66bab8b6e7e7bdc67f9f1196d4a90c6085"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/robmorgan/phinx/zipball/257b9e34877d442e177bb1b728d04d00d8c876ba",
-                "reference": "257b9e34877d442e177bb1b728d04d00d8c876ba",
+                "url": "https://api.github.com/repos/robmorgan/phinx/zipball/5ecb4b66bab8b6e7e7bdc67f9f1196d4a90c6085",
+                "reference": "5ecb4b66bab8b6e7e7bdc67f9f1196d4a90c6085",
                 "shasum": ""
             },
             "require": {
@@ -523,7 +523,7 @@
                 "migrations",
                 "phinx"
             ],
-            "time": "2015-02-06 23:09:57"
+            "time": "2015-02-07 01:35:20"
         },
         {
             "name": "symfony/config",
