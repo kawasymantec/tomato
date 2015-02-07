@@ -9,7 +9,7 @@
     <div class="row">
         <div class="top_area col-md-12">
             <span class="header">タスクの新規登録</span>
-            <a href="/tasks/add">
+            <a href="tasks/add">
                 <button id="add" type="button" class="btn btn-primary">タスク登録</button>
             </a>
         </div>
